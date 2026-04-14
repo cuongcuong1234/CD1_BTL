@@ -195,6 +195,23 @@
                 <button class="navbar-toggler" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="d-flex gap-2 ms-auto">
+                    @auth
+                        <button class="btn btn-outline-danger btn-sm" onclick="document.getElementById('logout-form').submit()">
+                            <i class="bi bi-box-arrow-right"></i> Đăng Xuất
+                        </button>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+                            @csrf
+                        </form>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-outline-primary btn-sm">
+                            <i class="bi bi-box-arrow-in-right"></i> Đăng Nhập
+                        </a>
+                        <a href="{{ route('register') }}" class="btn btn-primary btn-sm">
+                            <i class="bi bi-person-plus"></i> Đăng Ký
+                        </a>
+                    @endauth
+                </div>
             </div>
         </nav>
 

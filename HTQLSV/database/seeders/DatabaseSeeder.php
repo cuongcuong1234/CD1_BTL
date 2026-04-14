@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Tạo tài khoản người dùng
+        $this->call(UserSeeder::class);
+
         // Tạo 3 Giáo Viên
         Teacher::create([
             'teacher_code' => 'GV001',

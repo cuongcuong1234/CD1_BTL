@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Dashboard | Hệ Thống Quản Lý Sinh Viên')
-@section('page-title', 'Dashboard')
+@section('title', 'Bảng Điều Khiển')
 
 @section('content')
 <div class="container-fluid">
