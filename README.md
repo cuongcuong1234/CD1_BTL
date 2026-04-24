@@ -246,30 +246,6 @@ php artisan serve
 # 5. Truy cập
 # Browser: http://localhost:8000
 ```
-
-## 📊 Khác Biệt Quan Trọng
-
-### Eager Loading (Tối ưu Queries)
-Controllers sử dụng `with()` để tải relationships:
-```php
-Student::with('classroom', 'grades', 'enrollments')
-```
-
-### Mass Assignment Protection
-Models sử dụng `$fillable`:
-```php
-protected $fillable = ['student_code', 'name', 'email', ...];
-```
-
-### Attribute Casting
-Models cast các attributes:
-```php
-protected $casts = [
-    'status' => 'string',
-    'enrollment_date' => 'date',
-];
-```
-
 ## 📝 Các Tệp Quan Trọng
 
 ### Models (`app/Models/`)
@@ -304,22 +280,3 @@ protected $casts = [
 - `subjects/` - Views cho môn học
 - `grades/` - Views cho điểm
 - `enrollments/` - Views cho đăng ký
-
-## 🐛 Troubleshooting
-
-### Lỗi "File not found"
-```bash
-php artisan cache:clear
-php artisan view:clear
-```
-
-### Reset Database
-```bash
-php artisan migrate:refresh
-```
-
-### Kiểm Tra Logs
-```bash
-# Log file
-storage/logs/laravel.log
-```
