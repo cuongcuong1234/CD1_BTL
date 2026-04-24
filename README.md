@@ -219,15 +219,6 @@ Sinh Viên Đã Xóa → /students-trashed → Nhấn "Khôi Phục"
 ### Danh Sách Đăng Ký
 - Lọc theo: Sinh viên, Môn học, Trạng thái
 
-## 📱 Phân Trang
-
-- Danh sách Sinh viên: 10 bản ghi/trang
-- Danh sách Lớp: 10 bản ghi/trang
-- Danh sách Giáo viên: 10 bản ghi/trang
-- Danh sách Môn học: 10 bản ghi/trang
-- Danh sách Điểm: 20 bản ghi/trang
-- Danh sách Đăng ký: 15 bản ghi/trang
-
 ## 🚀 Chạy Ứng Dụng
 
 ```bash
