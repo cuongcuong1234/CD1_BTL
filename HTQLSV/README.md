@@ -1,59 +1,343 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📚 HỆ THỐNG QUẢN LÝ SINH VIÊN - HƯỚNG DẪN SỬ DỤNG
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 🎯 Tính Năng Chính
 
-## About Laravel
+### 1. Dashboard 📊
+- Thống kê tổng quan về sinh viên, lớp, giáo viên, môn học
+- Hiển thị lớp có sinh viên nhiều nhất
+- Danh sách sinh viên mới nhất
+- Top 5 sinh viên xuất sắc
+- Điểm trung bình chung
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Truy cập**: `http://localhost:8000/`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 2. Quản Lý Sinh Viên 👨‍🎓
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+#### Chức Năng
+- ✅ **Thêm Sinh Viên**: Tạo sinh viên mới với đầy đủ thông tin
+- ✅ **Danh Sách**: Xem tất cả sinh viên, tìm kiếm, lọc theo lớp/trạng thái
+- ✅ **Sửa**: Cập nhật thông tin sinh viên
+- ✅ **Xem Chi Tiết**: Xem lịch sử đăng ký, bảng điểm
+- ✅ **Xóa Mềm (Soft Delete)**: Xóa sinh viên, có thể khôi phục
+- ✅ **Khôi Phục**: Phục hồi sinh viên đã xóa
 
-## Learning Laravel
+#### Thông Tin Sinh Viên
+- Mã sinh viên (duy nhất)
+- Tên
+- Email (duy nhất)
+- Số điện thoại
+- Địa chỉ
+- Lớp học
+- Trạng thái (Đang học / Bảo lưu)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+**Routes**:
+```
+GET    /students                 → Danh sách
+POST   /students                 → Thêm
+GET    /students/create         → Form thêm
+GET    /students/{id}           → Chi tiết
+GET    /students/{id}/edit      → Form sửa
+PUT    /students/{id}           → Lưu sửa
+DELETE /students/{id}           → Xóa
+GET    /students/restore/{id}   → Khôi phục
+GET    /students-trashed        → Danh sách đã xóa
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 3. Quản Lý Lớp Học 🏫
 
-## Laravel Sponsors
+**Chức Năng**: CRUD đầy đủ, manage sinh viên theo lớp
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+**Thông Tin Lớp**
+- Mã lớp (duy nhất)
+- Tên lớp
+- Năm học
+- Giáo viên hướng dẫn
+- Sức chứa
 
-### Premium Partners
+**Routes**:
+```
+GET    /classrooms            → Danh sách
+POST   /classrooms            → Thêm
+GET    /classrooms/create     → Form thêm
+GET    /classrooms/{id}       → Chi tiết
+GET    /classrooms/{id}/edit  → Form sửa
+PUT    /classrooms/{id}       → Lưu sửa
+DELETE /classrooms/{id}       → Xóa
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 4. Quản Lý Giáo Viên 👨‍🏫
 
-## Contributing
+**Thông Tin Giáo Viên**
+- Mã giáo viên
+- Tên
+- Email
+- Điện thoại
+- Chuyên ngành
+- Trạng thái
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 5. Quản Lý Môn Học 📖
 
-## Code of Conduct
+**Thông Tin Môn Học**
+- Mã môn (duy nhất)
+- Tên môn
+- Mô tả
+- Số tín chỉ
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 6. Quản Lý Điểm ⭐
 
-## Security Vulnerabilities
+**Chức Năng**
+- Nhập/Cập nhật điểm cho sinh viên
+- Tự động tính xếp loại (A, B, C, D, F)
+- Lọc theo sinh viên hoặc môn học
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**Xếp Loại Điểm**
+| Điểm | Xếp Loại |
+|------|---------|
+| 8.5 - 10.0 | A |
+| 7.0 - 8.4 | B |
+| 5.5 - 6.9 | C |
+| 4.0 - 5.4 | D |
+| 0 - 3.9 | F |
 
-## License
+### 7. Quản Lý Đăng Ký Học 📝
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Chức Năng**
+- Đăng ký sinh viên vào môn học
+- Theo dõi trạng thái đăng ký (Đang học, Hoàn thành, Bỏ học)
+- Ngăn chặn đăng ký trùng lặp
+
+## 💾 Quan Hệ Dữ Liệu
+
+```
+Sinh Viên (Student)
+├── belongsTo Lớp Học (Classroom)
+├── hasMany Điểm (Grade)
+└── hasMany Đăng Ký (Enrollment)
+
+Lớp Học (Classroom)
+├── belongsTo Giáo Viên (Teacher)
+└── hasMany Sinh Viên (Student)
+
+Giáo Viên (Teacher)
+└── hasMany Lớp Học (Classroom)
+
+Môn Học (Subject)
+├── hasMany Điểm (Grade)
+└── hasMany Đăng Ký (Enrollment)
+
+Điểm (Grade)
+├── belongsTo Sinh Viên (Student)
+└── belongsTo Môn Học (Subject)
+
+Đăng Ký (Enrollment)
+├── belongsTo Sinh Viên (Student)
+└── belongsTo Môn Học (Subject)
+
+Many-to-Many:
+Sinh Viên ↔ Môn Học (qua bảng Enrollments)
+```
+
+## 🎨 Giao Diện
+
+### Layout Chính
+- **Sidebar Navigation**: Menu chính ở bên trái
+- **Responsive Design**: Tối ưu hóa cho desktop và mobile
+- **Bootstrap 5**: Giao diện hiện đại
+
+### Thành Phần
+- **Alert**: Thông báo lỗi/thành công (tự động ẩn sau 5 giây)
+- **Badges**: Trạng thái hiển thị (active, inactive, etc.)
+- **Tables**: Bảng danh sách với pagination
+- **Forms**: Form nhập dữ liệu với validation
+
+## 🔒 Validation Rules
+
+### Sinh Viên
+```
+student_code   → required, unique
+name           → required, max:255
+email          → required, email, unique
+phone          → nullable, max:20
+address        → nullable
+classroom_id   → nullable, exists:classrooms
+status         → required, in:active,inactive
+```
+
+### Lớp Học
+```
+classroom_code → required, unique
+name           → required, max:255
+academic_year  → required
+teacher_id     → nullable, exists:teachers
+capacity       → required, integer, min:1, max:100
+```
+
+### Giáo Viên
+```
+teacher_code   → required, unique
+name           → required, max:255
+email          → required, email, unique
+phone          → nullable, max:20
+specialization → nullable, max:255
+status         → required, in:active,inactive
+```
+
+### Môn Học
+```
+subject_code   → required, unique
+name           → required, max:255
+description    → nullable
+credits        → required, integer, min:1, max:10
+```
+
+## 🔄 Soft Delete (Xóa Mềm)
+
+Tất cả models đều hỗ trợ xóa mềm:
+- Dữ liệu không bị xóa hẳn khỏi database
+- Có bảng "Đã Xóa" để xem các bản ghi đã xóa
+- Có nút "Khôi Phục" để lấy lại dữ liệu
+
+**Ví dụ**:
+```
+Sinh Viên Đã Xóa → /students-trashed → Nhấn "Khôi Phục"
+```
+
+## 🔍 Tìm Kiếm & Lọc
+
+### Danh Sách Sinh Viên
+- Tìm kiếm theo: Tên, Email, Mã SV
+- Lọc theo: Trạng thái, Lớp học
+- Sắp xếp theo: Ngày tạo, Tên
+
+### Danh Sách Lớp Học
+- Tìm kiếm theo: Tên, Mã lớp
+- Lọc theo: Năm học
+
+### Danh Sách Điểm
+- Lọc theo: Sinh viên, Môn học
+
+### Danh Sách Đăng Ký
+- Lọc theo: Sinh viên, Môn học, Trạng thái
+
+## 📱 Phân Trang
+
+- Danh sách Sinh viên: 10 bản ghi/trang
+- Danh sách Lớp: 10 bản ghi/trang
+- Danh sách Giáo viên: 10 bản ghi/trang
+- Danh sách Môn học: 10 bản ghi/trang
+- Danh sách Điểm: 20 bản ghi/trang
+- Danh sách Đăng ký: 15 bản ghi/trang
+
+## 🚀 Chạy Ứng Dụng
+
+```bash
+# 1. Vào thư mục project
+cd d:\HTQLSV
+
+# 2. Cài đặt dependencies (nếu chưa làm)
+composer install
+
+# 3. Chạy migrations (nếu chưa làm)
+php artisan migrate
+
+# 4. Chạy server
+php artisan serve
+
+# 5. Truy cập
+# Browser: http://localhost:8000
+```
+
+## 📊 Khác Biệt Quan Trọng
+
+### Eager Loading (Tối ưu Queries)
+Controllers sử dụng `with()` để tải relationships:
+```php
+Student::with('classroom', 'grades', 'enrollments')
+```
+
+### Mass Assignment Protection
+Models sử dụng `$fillable`:
+```php
+protected $fillable = ['student_code', 'name', 'email', ...];
+```
+
+### Attribute Casting
+Models cast các attributes:
+```php
+protected $casts = [
+    'status' => 'string',
+    'enrollment_date' => 'date',
+];
+```
+
+## 📝 Các Tệp Quan Trọng
+
+### Models (`app/Models/`)
+- `Student.php` - Sinh viên
+- `Classroom.php` - Lớp học
+- `Teacher.php` - Giáo viên
+- `Subject.php` - Môn học
+- `Grade.php` - Điểm
+- `Enrollment.php` - Đăng ký
+
+### Controllers (`app/Http/Controllers/`)
+- `StudentController.php`
+- `ClassroomController.php`
+- `TeacherController.php`
+- `SubjectController.php`
+- `GradeController.php`
+- `EnrollmentController.php`
+- `DashboardController.php`
+
+### Form Requests (`app/Http/Requests/`)
+- `StoreStudentRequest.php`
+- `StoreClassroomRequest.php`
+- `StoreTeacherRequest.php`
+- `StoreSubjectRequest.php`
+
+### Views (`resources/views/`)
+- `layouts/master.blade.php` - Layout chính
+- `dashboard.blade.php` - Dashboard
+- `students/` - Views cho sinh viên
+- `classrooms/` - Views cho lớp học
+- `teachers/` - Views cho giáo viên
+- `subjects/` - Views cho môn học
+- `grades/` - Views cho điểm
+- `enrollments/` - Views cho đăng ký
+
+## 🐛 Troubleshooting
+
+### Lỗi "File not found"
+```bash
+php artisan cache:clear
+php artisan view:clear
+```
+
+### Reset Database
+```bash
+php artisan migrate:refresh
+```
+
+### Kiểm Tra Logs
+```bash
+# Log file
+storage/logs/laravel.log
+```
+
+## ✨ Các Tính Năng Sẽ Thêm (Future)
+
+- [ ] Authentication & Authorization
+- [ ] Upload ảnh đại diện
+- [ ] Export PDF / Excel
+- [ ] Email notification
+- [ ] Gửi email thông báo điểm
+- [ ] Calendar events
+- [ ] API REST
+- [ ] Unit Tests
+- [ ] User roles (Admin, Teacher, Student)
+
+---
+
+**Phiên Bản**: 1.0.0  
+**Cập Nhật**: 09/04/2026  
+**Tác Giả**: Developer Team
